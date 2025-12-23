@@ -12,23 +12,23 @@
 
 ---
 
-## 馃搵 Table of Contents
+## Table of Contents
 
-- [Abstract](#-abstract)
-- [Key Contributions](#-key-contributions)
-- [System Architecture](#-system-architecture)
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [Project Structure](#-project-structure)
-- [Experiments](#-experiments)
-- [Results](#-results)
-- [Figures](#-figures)
-- [Citation](#-citation)
-- [License](#-license)
+- [Abstract](#abstract)
+- [Key Contributions](#key-contributions)
+- [System Architecture](#system-architecture)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Experiments](#experiments)
+- [Results](#results)
+- [Figures](#figures)
+- [Citation](#citation)
+- [License](#license)
 
 ---
 
-## 馃搫 Abstract
+## Abstract
 
 Blockchain networks processed over 500 million daily transactions in 2024, with security incidents causing losses exceeding $3.8 billion annually. Multi-chain ecosystems have enabled sophisticated anomaly patterns that exploit differences in confirmation times across heterogeneous blockchains. Effective anomaly detection requires distributed monitoring systems capable of operating across geographically dispersed edge nodes while maintaining resilience against adversarial participants.
 
@@ -40,7 +40,7 @@ Blockchain networks processed over 500 million daily transactions in 2024, with 
 
 ---
 
-## 馃幆 Key Contributions
+## Key Contributions
 
 | Contribution | Description | Key Metric |
 |:-------------|:------------|:-----------|
@@ -51,25 +51,20 @@ Blockchain networks processed over 500 million daily transactions in 2024, with 
 
 ---
 
-## 馃彈 System Architecture
+## System Architecture
 
-<p align="center">
-  <img src="figures/necons_system_overview.pdf" alt="NECons System Architecture" width="100%"/>
-</p>
-
-**Figure 1**: NECons three-tier architecture comprising multi-chain data ingestion, distributed edge processing with NetworkAwareMGD modules, and Byzantine-resilient consensus aggregation.
 
 ### Core Components
 
 | Component | Description | Key Formula |
 |:----------|:------------|:------------|
-| **NetworkAwareMGD** | Adaptive graph attention with discrepancy | `h_v^(l+1) = 蟽(W路h_v + 危 伪虄_vu路[h_u鈥栁擾vu])` |
-| **Trust Scoring** | Temporal Byzantine detection | `蟿岬(t) = 尾路蟿岬(t-1) + (1-尾)路[w鈧佅佱耽+w鈧偽坚耽+w鈧兾结耽]` |
-| **Cross-Chain Sync** | Multi-chain correlation | `O(K路log n + 危鈧?F鈧柭稵鈧?` |
+| **NetworkAwareMGD** | Adaptive graph attention with discrepancy | h_v^(l+1) = sigma(W*h_v + Sum alpha_vu*[h_u||Delta_vu]) |
+| **Trust Scoring** | Temporal Byzantine detection | tau_i^(t) = beta*tau_i^(t-1) + (1-beta)*[w1*rho_i+w2*mu_i+w3*nu_i] |
+| **Cross-Chain Sync** | Multi-chain correlation | O(K*log n + Sum_k F_k*T_k) |
 
 ---
 
-## 馃捇 Installation
+## Installation
 
 ### Prerequisites
 
@@ -102,7 +97,7 @@ See `requirements` file for complete dependency list including:
 
 ---
 
-## 馃殌 Quick Start
+## Quick Start
 
 ### Training
 
@@ -136,57 +131,62 @@ python experimental_results.py --output figures/
 
 ---
 
-## 馃搧 Project Structure
+## Project Structure
 
 ```
 NECons/
-鈹?鈹溾攢鈹€ 馃搫 __init__.py                      # Package initialization
-鈹溾攢鈹€ 馃搫 config.yaml                      # Configuration file
-鈹溾攢鈹€ 馃搫 requirements                     # Python dependencies
-鈹溾攢鈹€ 馃搫 README.md                        # Documentation
-鈹?鈹溾攢鈹€ 馃搫 necons_main.py                   # Main entry point
-鈹溾攢鈹€ 馃搫 necons_core.py                   # Core NECons framework
-鈹?                                      #   - NetworkAwareMGD model
-鈹?                                      #   - Byzantine consensus protocol
-鈹?                                      #   - Cross-chain synchronization
-鈹溾攢鈹€ 馃搫 necons_data.py                   # Data loading & preprocessing
-鈹?                                      #   - Dataset loaders
-鈹?                                      #   - Graph construction
-鈹?                                      #   - Feature extraction
-鈹溾攢鈹€ 馃搫 necons_train.py                  # Training pipeline
-鈹?                                      #   - Distributed training
-鈹?                                      #   - Byzantine simulation
-鈹?                                      #   - Model optimization
-鈹溾攢鈹€ 馃搫 necons_eval.py                   # Evaluation & metrics
-鈹?                                      #   - Performance metrics
-鈹?                                      #   - Statistical analysis
-鈹?                                      #   - Result visualization
-鈹溾攢鈹€ 馃搫 experimental_results.py          # Experiment reproduction
-鈹?鈹斺攢鈹€ 馃搧 figures/                         # Paper figures
-    鈹?    鈹溾攢鈹€ 馃搳 Architecture Diagrams
-    鈹?  鈹溾攢鈹€ necons_system_overview.drawio
-    鈹?  鈹溾攢鈹€ necons_system_overview.pdf
-    鈹?  鈹溾攢鈹€ mgd_architecture.drawio
-    鈹?  鈹溾攢鈹€ mgd_architecture.pdf
-    鈹?  鈹溾攢鈹€ consensus_protocol.drawio
-    鈹?  鈹溾攢鈹€ consensus_protocol.pdf
-    鈹?  鈹溾攢鈹€ problem_formalization.drawio
-    鈹?  鈹斺攢鈹€ problem_formalization.pdf
-    鈹?    鈹斺攢鈹€ 馃搱 Experimental Results
-        鈹溾攢鈹€ ablation_study_quad.py
-        鈹溾攢鈹€ ablation_study_quad.pdf
-        鈹溾攢鈹€ ablation_study_quad.png
-        鈹溾攢鈹€ byzantine_resilience_quad.py
-        鈹溾攢鈹€ byzantine_resilience_quad.pdf
-        鈹溾攢鈹€ byzantine_resilience_quad.png
-        鈹溾攢鈹€ scalability_analysis_quad.py
-        鈹溾攢鈹€ scalability_analysis_quad.pdf
-        鈹斺攢鈹€ scalability_analysis_quad.png
+|
+|-- __init__.py                         # Package initialization
+|-- config.yaml                         # Configuration file
+|-- requirements                        # Python dependencies
+|-- README.md                           # Documentation
+|
+|-- necons_main.py                      # Main entry point
+|-- necons_core.py                      # Core NECons framework
+|                                       #   - NetworkAwareMGD model
+|                                       #   - Byzantine consensus protocol
+|                                       #   - Cross-chain synchronization
+|-- necons_data.py                      # Data loading and preprocessing
+|                                       #   - Dataset loaders
+|                                       #   - Graph construction
+|                                       #   - Feature extraction
+|-- necons_train.py                     # Training pipeline
+|                                       #   - Distributed training
+|                                       #   - Byzantine simulation
+|                                       #   - Model optimization
+|-- necons_eval.py                      # Evaluation and metrics
+|                                       #   - Performance metrics
+|                                       #   - Statistical analysis
+|                                       #   - Result visualization
+|-- experimental_results.py             # Experiment reproduction
+|
++-- figures/                            # Paper figures
+    |
+    |-- Architecture Diagrams
+    |   |-- necons_system_overview.drawio
+    |   |-- necons_system_overview.pdf
+    |   |-- mgd_architecture.drawio
+    |   |-- mgd_architecture.pdf
+    |   |-- consensus_protocol.drawio
+    |   |-- consensus_protocol.pdf
+    |   |-- problem_formalization.drawio
+    |   +-- problem_formalization.pdf
+    |
+    +-- Experimental Results
+        |-- ablation_study_quad.py
+        |-- ablation_study_quad.pdf
+        |-- ablation_study_quad.png
+        |-- byzantine_resilience_quad.py
+        |-- byzantine_resilience_quad.pdf
+        |-- byzantine_resilience_quad.png
+        |-- scalability_analysis_quad.py
+        |-- scalability_analysis_quad.pdf
+        +-- scalability_analysis_quad.png
 ```
 
 ---
 
-## 馃敩 Experiments
+## Experiments
 
 ### Reproduce Paper Results
 
@@ -225,7 +225,7 @@ training:
 
 ---
 
-## 馃搱 Results
+## Results
 
 ### Single-Chain Detection Performance
 
@@ -258,24 +258,24 @@ training:
 
 ---
 
-## 馃柤 Figures
+## Figures
 
 ### Architecture Diagrams
 
 | Figure | File | Description |
 |:-------|:-----|:------------|
-| Fig. 1 | `necons_system_overview.pdf` | Complete system architecture |
-| Fig. 2 | `problem_formalization.pdf` | Problem formalization diagram |
-| Fig. 3 | `mgd_architecture.pdf` | NetworkAwareMGD architecture |
-| Fig. 4 | `consensus_protocol.pdf` | Byzantine consensus protocol |
+| Fig. 1 | necons_system_overview.pdf | Complete system architecture |
+| Fig. 2 | problem_formalization.pdf | Problem formalization diagram |
+| Fig. 3 | mgd_architecture.pdf | NetworkAwareMGD architecture |
+| Fig. 4 | consensus_protocol.pdf | Byzantine consensus protocol |
 
 ### Experimental Results
 
 | Figure | File | Description |
 |:-------|:-----|:------------|
-| Fig. 5 | `ablation_study_quad.pdf` | Ablation study (4-panel) |
-| Fig. 6 | `byzantine_resilience_quad.pdf` | Byzantine resilience (4-panel) |
-| Fig. 7 | `scalability_analysis_quad.pdf` | Scalability analysis (4-panel) |
+| Fig. 5 | ablation_study_quad.pdf | Ablation study (4-panel) |
+| Fig. 6 | byzantine_resilience_quad.pdf | Byzantine resilience (4-panel) |
+| Fig. 7 | scalability_analysis_quad.pdf | Scalability analysis (4-panel) |
 
 ### Regenerate Figures
 
@@ -294,28 +294,10 @@ python scalability_analysis_quad.py
 
 ---
 
-## 馃摑 Citation
-
-If you find this work useful, please cite our paper:
-
-```bibtex
-@article{necons2025,
-  author    = {Author, First and Author, Second and Author, Third},
-  title     = {{NECons}: Network-aware Edge-based Consensus for Distributed 
-               Blockchain Anomaly Detection},
-  journal   = {IEEE Transactions on Parallel and Distributed Systems},
-  year      = {2025},
-  volume    = {XX},
-  number    = {XX},
-  pages     = {1--15},
-  doi       = {10.1109/TPDS.2025.XXXXXXX},
-  publisher = {IEEE}
-}
-```
 
 ---
 
-## 馃摐 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -339,7 +321,6 @@ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ```
 
-
 <p align="center">
-  <i>猸?Star this repository if you find it useful!</i>
+  <i>Star this repository if you find it useful!</i>
 </p>

@@ -5,8 +5,6 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/xxxx.xxxxx"><img src="https://img.shields.io/badge/arXiv-xxxx.xxxxx-b31b1b.svg" alt="arXiv"></a>
-  <a href="https://doi.org/10.1109/TPDS.2025.xxxxxxx"><img src="https://img.shields.io/badge/DOI-10.1109%2FTPDS.2025.xxxxxxx-blue.svg" alt="DOI"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://www.python.org/downloads/release/python-3100/"><img src="https://img.shields.io/badge/Python-3.10%2B-blue.svg" alt="Python 3.10+"></a>
   <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c.svg" alt="PyTorch 2.0+"></a>
@@ -29,9 +27,7 @@
 - [Experiments](#-experiments)
 - [Results](#-results)
 - [Project Structure](#-project-structure)
-- [Citation](#-citation)
 - [License](#-license)
-- [Acknowledgments](#-acknowledgments)
 
 ---
 
@@ -464,27 +460,6 @@ NECons/
     └── 📄 test_crosschain.py
 ```
 
----
-
-## 📝 Citation
-
-If you find this work useful for your research, please cite our paper:
-
-```bibtex
-@article{necons2025,
-  author    = {Author, First and Author, Second and Author, Third},
-  title     = {{NECons}: Network-aware Edge-based Consensus for Distributed 
-               Blockchain Anomaly Detection},
-  journal   = {IEEE Transactions on Parallel and Distributed Systems},
-  year      = {2025},
-  volume    = {XX},
-  number    = {XX},
-  pages     = {1--15},
-  doi       = {10.1109/TPDS.2025.XXXXXXX},
-  publisher = {IEEE}
-}
-```
-
 ### Related Works
 
 ```bibtex
@@ -543,15 +518,6 @@ SOFTWARE.
 
 ---
 
-## 🙏 Acknowledgments
-
-This work was supported by:
-
-- [Funding Agency 1] under Grant No. XXXX
-- [Funding Agency 2] under Grant No. XXXX
-- [University/Institution] Research Fund
-
-We thank the anonymous reviewers for their valuable feedback that significantly improved this paper.
 
 ### Computing Resources
 
@@ -560,17 +526,6 @@ Experiments were conducted on:
 - AMD EPYC 7763 64-Core Processors
 - 512GB DDR4 RAM per node
 
----
-
-## 📧 Contact
-
-For questions or collaborations, please contact:
-
-- **First Author**: [email@university.edu](mailto:email@university.edu)
-- **Project Issues**: [GitHub Issues](https://github.com/BlockchainLab/NECons/issues)
-- **Project Website**: [https://necons-project.github.io](https://necons-project.github.io)
-
----
 
 <p align="center">
   <i>Star ⭐ this repository if you find it useful!</i>

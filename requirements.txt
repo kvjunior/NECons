@@ -1,0 +1,71 @@
+# ==============================================================================
+# NECons Requirements
+# ==============================================================================
+# Network-aware Edge-based Consensus for Distributed Blockchain Anomaly Detection
+# Target Venue: IEEE Transactions on Parallel and Distributed Systems (TPDS) 2026
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Core Deep Learning
+# ------------------------------------------------------------------------------
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ------------------------------------------------------------------------------
+# Graph Neural Networks
+# ------------------------------------------------------------------------------
+torch-geometric>=2.4.0
+torch-scatter>=2.1.0
+torch-sparse>=0.6.0
+torch-cluster>=1.6.0
+
+# ------------------------------------------------------------------------------
+# Scientific Computing
+# ------------------------------------------------------------------------------
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.2.0
+pandas>=2.0.0
+
+# ------------------------------------------------------------------------------
+# Configuration and Logging
+# ------------------------------------------------------------------------------
+pyyaml>=6.0
+tensorboard>=2.12.0
+
+# ------------------------------------------------------------------------------
+# Utilities
+# ------------------------------------------------------------------------------
+tqdm>=4.65.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# ------------------------------------------------------------------------------
+# Optional: Distributed Training
+# ------------------------------------------------------------------------------
+# Uncomment if using distributed training
+# horovod>=0.28.0
+# mpi4py>=3.1.0
+
+# ------------------------------------------------------------------------------
+# Development and Testing
+# ------------------------------------------------------------------------------
+# pytest>=7.3.0
+# pytest-cov>=4.1.0
+# black>=23.3.0
+# isort>=5.12.0
+# flake8>=6.0.0
+
+# ------------------------------------------------------------------------------
+# Installation Notes
+# ------------------------------------------------------------------------------
+# For PyTorch Geometric, install with:
+#   pip install torch-geometric
+#   pip install torch-scatter torch-sparse torch-cluster -f https://data.pyg.org/whl/torch-2.0.0+cu118.html
+#
+# Adjust the URL based on your PyTorch and CUDA versions.
+# See: https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
+#
+# For the server configuration (4× RTX 3090):
+#   CUDA 11.8 is recommended
+#   Install PyTorch with: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118

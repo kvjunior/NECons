@@ -1,0 +1,150 @@
+# ==============================================================================
+# NECons Configuration File
+# ==============================================================================
+# Network-aware Edge-based Consensus for Distributed Blockchain Anomaly Detection
+# Target Venue: IEEE Transactions on Parallel and Distributed Systems (TPDS) 2026
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Experiment Identification
+# ------------------------------------------------------------------------------
+experiment_name: "necons_tpds_2026"
+seed: 42
+
+# ------------------------------------------------------------------------------
+# Hardware Configuration
+# ------------------------------------------------------------------------------
+device: "auto"  # Options: "auto", "cuda", "cuda:0", "cpu"
+num_gpus: 1
+num_workers: 4
+
+# ------------------------------------------------------------------------------
+# Model Architecture
+# ------------------------------------------------------------------------------
+# Node and edge feature dimensions (determined by dataset)
+node_input_dim: 8
+edge_input_dim: 4
+
+# Hidden layer configuration
+hidden_dim: 256
+output_dim: 2  # Binary classification: normal vs anomaly
+
+# MGD (Multigraph Discrepancy) layers
+num_mgd_layers: 3
+num_heads: 8
+dropout: 0.2
+
+# Network-aware attention
+network_aware: true
+
+# Edge2Seq for temporal encoding
+use_edge2seq: true
+max_sequence_length: 50
+
+# ------------------------------------------------------------------------------
+# Training Configuration
+# ------------------------------------------------------------------------------
+epochs: 200
+batch_size: 256
+learning_rate: 0.001
+weight_decay: 0.0001
+
+# Optimizer: "adam", "adamw", "sgd"
+optimizer: "adamw"
+
+# Learning rate scheduler: "step", "cosine", "cosine_warmup", "plateau", "onecycle"
+scheduler: "cosine_warmup"
+warmup_epochs: 10
+
+# Mixed precision training
+use_amp: true
+
+# Gradient clipping
+gradient_clip_norm: 1.0
+
+# ------------------------------------------------------------------------------
+# Loss Function
+# ------------------------------------------------------------------------------
+# Class weights for imbalanced data
+use_class_weights: true
+
+# Focal loss for hard examples (recommended for anomaly detection)
+focal_loss: true
+focal_gamma: 2.0
+
+# Label smoothing (0.0 to disable)
+label_smoothing: 0.0
+
+# ------------------------------------------------------------------------------
+# Early Stopping
+# ------------------------------------------------------------------------------
+early_stopping: true
+patience: 20
+min_delta: 0.0001
+monitor_metric: "val_f1"
+
+# ------------------------------------------------------------------------------
+# Dataset Configuration
+# ------------------------------------------------------------------------------
+# Dataset options: "ethereum_s", "ethereum_p", "bitcoin_m", "bitcoin_l", "synthetic"
+dataset: "ethereum_s"
+data_dir: "data"
+
+# Data splits
+train_ratio: 0.7
+val_ratio: 0.15
+test_ratio: 0.15
+
+# ------------------------------------------------------------------------------
+# Data Augmentation
+# ------------------------------------------------------------------------------
+use_augmentation: true
+edge_dropout: 0.1
+node_dropout: 0.1
+feature_masking: 0.1
+
+# ------------------------------------------------------------------------------
+# Byzantine Simulation (for distributed training experiments)
+# ------------------------------------------------------------------------------
+simulate_byzantine: false
+num_edge_nodes: 100
+byzantine_ratio: 0.0  # Set to 0.33 for standard Byzantine evaluation
+
+# Attack types: "none", "model_poisoning", "label_flipping", "gradient_scaling"
+attack_type: "none"
+
+# Aggregation methods: "mean", "krum", "trimmed_mean", "median", "bulyan", "trust"
+aggregation_method: "bulyan"
+consensus_rounds: 3
+
+# ------------------------------------------------------------------------------
+# Cross-Chain Configuration
+# ------------------------------------------------------------------------------
+enable_cross_chain: true
+supported_chains:
+  - "ethereum"
+  - "bitcoin"
+  - "polygon"
+  - "binance_sc"
+
+# ------------------------------------------------------------------------------
+# Evaluation Configuration
+# ------------------------------------------------------------------------------
+num_eval_runs: 10
+confidence_level: 0.95
+
+# ------------------------------------------------------------------------------
+# Output and Checkpointing
+# ------------------------------------------------------------------------------
+output_dir: "results"
+checkpoint_dir: "checkpoints"
+save_frequency: 10
+save_best_only: true
+
+# ------------------------------------------------------------------------------
+# Logging Configuration
+# ------------------------------------------------------------------------------
+log_dir: "results/logs"
+log_level: "INFO"  # Options: "DEBUG", "INFO", "WARNING", "ERROR"
+use_tensorboard: true
+tensorboard_dir: "results/tensorboard"

@@ -23,7 +23,6 @@
 - [Experiments](#experiments)
 - [Results](#results)
 - [Figures](#figures)
-- [Citation](#citation)
 - [License](#license)
 
 ---
